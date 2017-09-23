@@ -23,10 +23,17 @@
  */
 package com.example.leejh.myscanner;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.perples.recosdk.RECOBeacon;
 import com.perples.recosdk.RECOBeaconRegion;
@@ -38,7 +45,7 @@ import java.util.Collection;
 
 import static android.content.ContentValues.TAG;
 
-public class RecoRangingActivity extends RecoActivity implements RECORangingListener {
+public class RecoRangingActivity extends RecoActivity implements RECORangingListener{
 
     private RecoRangingListAdapter mRangingListAdapter;
     private ListView mRegionListView;
@@ -66,16 +73,27 @@ public class RecoRangingActivity extends RecoActivity implements RECORangingList
          * bind후에, onServiceConnect() 콜백 메소드가 호출됩니다. 콜백 메소드 호출 이후 monitoring / ranging 작업을 수행하시기 바랍니다.
          */
         mRecoManager.bind(this);
+
+        mRangingListAdapter = new RecoRangingListAdapter(this);
+        mRegionListView = (ListView)findViewById(R.id.list_ranging);
+        mRegionListView.setAdapter(mRangingListAdapter);
+
+        mRegionListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+                Log.i("heeeeeeeeeeeeeeeeeere","  I'm");
+                Toast.makeText(getApplicationContext(), "LOCKED", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        mRangingListAdapter = new RecoRangingListAdapter(this);
-        Log.i(TAG, "test tttttt");
-        mRegionListView = (ListView)findViewById(R.id.list_ranging);
-        mRegionListView.setAdapter(mRangingListAdapter);
+//        mRangingListAdapter = new RecoRangingListAdapter(this);
+//        mRegionListView = (ListView)findViewById(R.id.list_ranging);
+//        mRegionListView.setAdapter(mRangingListAdapter);
+
     }
 
     @Override
