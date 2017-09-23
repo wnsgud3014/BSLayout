@@ -23,7 +23,7 @@
     <string name="tx_label">Tx: </string>
     <string name="rssi_label">RSSI: </string>
     <string name="battery_label">Battery: </string>
-    <string name="proximity_label">거리: </string>
+    <string name="proximity_label">Distance: </string>
     <string name="accuracy_label">m</string>
     <string name="millivolt">mV</string>
 
@@ -33,4 +33,5 @@
 
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="selectList">Select Your Item</string>
 </resources>

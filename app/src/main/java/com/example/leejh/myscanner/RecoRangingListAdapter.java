@@ -29,7 +29,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.perples.recosdk.RECOBeacon;
 
@@ -39,6 +41,7 @@ import java.util.Collection;
 public class RecoRangingListAdapter extends BaseAdapter {
     private ArrayList<RECOBeacon> mRangedBeacons;
     private LayoutInflater mLayoutInflater;
+    static boolean STATUS = false;
 
     public RecoRangingListAdapter(Context context) {
         super();
@@ -104,7 +107,7 @@ public class RecoRangingListAdapter extends BaseAdapter {
 
 //        String proximityUuid = recoBeacon.getProximityUuid();
 
-        String proximityUuid = "SmartLock";
+        String proximityUuid = "Office Drawer";
 
 //        viewHolder.recoProximityUuid.setText(String.format("%s-%s-%s-%s-%s", proximityUuid.substring(0, 8), proximityUuid.substring(8, 12), proximityUuid.substring(12, 16), proximityUuid.substring(16, 20), proximityUuid.substring(20) ));
         viewHolder.recoProximityUuid.setText(proximityUuid);
@@ -116,16 +119,6 @@ public class RecoRangingListAdapter extends BaseAdapter {
 //        viewHolder.recoBattery.setText(recoBeacon.getBattery() + "");
         viewHolder.recoProximity.setText(recoBeacon.getProximity() + "");
         viewHolder.recoAccuracy.setText(String.format("%.2f", recoBeacon.getAccuracy()));
-
-        Button button = (Button) convertView.findViewById(R.id.button);
-        button.setBackgroundResource(R.drawable.jangguem);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         return convertView;
     }

@@ -3,6 +3,7 @@ package com.example.leejh.myscanner;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,9 +39,11 @@ public class DeviceList extends Activity {
 
         ArrayList<String> items = new ArrayList<>();
 
-        items.add("Drawer");
-        items.add("Baggage");
+        items.add("Office Drawer");
+        items.add("First Baggage");
         items.add("Safe");
+        items.add("House Drawer");
+        items.add("Second Baggage");
 
         CustomAdapter adapter = new CustomAdapter(this, 0, items);
         listView.setAdapter(adapter);
@@ -69,15 +73,15 @@ public class DeviceList extends Activity {
                 v = vi.inflate(R.layout.item_device, null);
             }
 
-            ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
-
-            if ("Drawer".equals(items.get(position))) {
-                imageView.setImageResource(R.drawable.officedrawer);
-            } else if ("Baggage".equals(items.get(position))) {
-                imageView.setImageResource(R.drawable.baggage);
-            } else if ("Safe".equals(items.get(position))) {
-                imageView.setImageResource(R.drawable.safe);
-            }
+//            ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
+//
+//            if ("Drawer".equals(items.get(position))) {
+//                imageView.setImageResource(R.drawable.officedrawer);
+//            } else if ("Baggage".equals(items.get(position))) {
+//                imageView.setImageResource(R.drawable.baggage);
+//            } else if ("Safe".equals(items.get(position))) {
+//                imageView.setImageResource(R.drawable.safe);
+//            }
 //
 //            Button button = (Button)v.findViewById(R.id.buttonDevice);
 //            if("Drawer".equals(items.get(position))) {
@@ -88,8 +92,33 @@ public class DeviceList extends Activity {
 //                button.setBackgroundResource(R.drawable.safe);
 //            }
 
+            LinearLayout itemLayout = (LinearLayout)v.findViewById(R.id.itemLayout);
+
             TextView textView = (TextView) v.findViewById(R.id.textView);
             textView.setText(items.get(position));
+
+            ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
+
+
+            if("Office Drawer".equals(items.get(position))){
+//                textView.setBackgroundColor(getResources().getColor(R.color.colorLightPurple));
+                itemLayout.setBackgroundColor(getResources().getColor(R.color.colorLightGreen));
+                imageView.setImageResource(R.drawable.drawer_white);
+            } else if("House Drawer".equals(items.get(position))) {
+                itemLayout.setBackgroundColor(getResources().getColor(R.color.colorSkyBlue));
+                imageView.setImageResource(R.drawable.drawer_white);
+            } else if("First Baggage".equals(items.get(position))){
+//                textView.setBackgroundColor(getResources().getColor(R.color.colorPink));
+                itemLayout.setBackgroundColor(getResources().getColor(R.color.colorPink));
+                imageView.setImageResource(R.drawable.baggage_white);
+            } else if("Second Baggage".equals(items.get(position))) {
+                itemLayout.setBackgroundColor(getResources().getColor(R.color.colorOrange));
+                imageView.setImageResource(R.drawable.baggage_white);
+            } else if("Safe".equals(items.get(position))) {
+//                textView.setBackgroundColor(getResources().getColor(R.color.colorOrange));
+                itemLayout.setBackgroundColor(getResources().getColor(R.color.colorLightPurple));
+                imageView.setImageResource(R.drawable.safe_white);
+            }
 
             final String text = items.get(position);
 
