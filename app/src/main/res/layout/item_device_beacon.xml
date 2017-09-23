@@ -191,7 +191,7 @@
             android:id="@+id/lock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/lock_white" />
+            android:src="@drawable/locked_white" />
 
 
     </LinearLayout>

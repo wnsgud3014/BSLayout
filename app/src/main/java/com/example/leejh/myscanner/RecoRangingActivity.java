@@ -26,10 +26,7 @@ package com.example.leejh.myscanner;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.perples.recosdk.RECOBeacon;
 import com.perples.recosdk.RECOBeaconRegion;
@@ -38,6 +35,8 @@ import com.perples.recosdk.RECORangingListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
+import static android.content.ContentValues.TAG;
 
 public class RecoRangingActivity extends RecoActivity implements RECORangingListener {
 
@@ -74,6 +73,7 @@ public class RecoRangingActivity extends RecoActivity implements RECORangingList
         super.onResume();
 
         mRangingListAdapter = new RecoRangingListAdapter(this);
+        Log.i(TAG, "test tttttt");
         mRegionListView = (ListView)findViewById(R.id.list_ranging);
         mRegionListView.setAdapter(mRangingListAdapter);
     }
