@@ -34,4 +34,7 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="selectList">Select Your Item</string>
+
+    <string name="switchManual">Manual Mode</string>
+    <string name="switchAuto">Auto Mode</string>
 </resources>

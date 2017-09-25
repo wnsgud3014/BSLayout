@@ -12,10 +12,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -25,7 +28,11 @@ import java.util.ArrayList;
 
 public class DeviceList extends Activity {
 
+
     ListView listView;
+
+    static boolean isManual = false;
+    static String strManual = "";
 
     protected void onResume() {
         super.onResume();
@@ -50,9 +57,34 @@ public class DeviceList extends Activity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Intent intent = new Intent(DeviceList.this, MainActivity.class);
-                startActivity(intent);
-//                finish();
+
+                if (!isManual) {
+                    Toast.makeText(getApplicationContext(), "Turn on the switch", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent intent = new Intent(DeviceList.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        Switch switchAuto = (Switch) findViewById(R.id.switchAuto);
+
+        switchAuto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked) {
+                    isManual = true;
+                    strManual = "Manual Mode";
+                    buttonView.setText(R.string.switchManual);
+                } else {
+                    isManual = false;
+                    strManual = "Auto Mode";
+                    buttonView.setText(R.string.switchAuto);
+                }
+
+                Toast.makeText(getApplicationContext(), strManual, Toast.LENGTH_LONG).show();
+
             }
         });
     }

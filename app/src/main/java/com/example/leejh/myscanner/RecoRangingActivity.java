@@ -44,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static android.content.ContentValues.TAG;
+import static com.example.leejh.myscanner.DeviceList.strManual;
 
 public class RecoRangingActivity extends RecoActivity implements RECORangingListener{
 
@@ -78,9 +79,10 @@ public class RecoRangingActivity extends RecoActivity implements RECORangingList
         mRegionListView = (ListView)findViewById(R.id.list_ranging);
         mRegionListView.setAdapter(mRangingListAdapter);
 
+        Toast.makeText(getApplicationContext(), strManual, Toast.LENGTH_LONG).show();
+
         mRegionListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Log.i("heeeeeeeeeeeeeeeeeere","  I'm");
                 Toast.makeText(getApplicationContext(), "LOCKED", Toast.LENGTH_LONG).show();
             }
         });
